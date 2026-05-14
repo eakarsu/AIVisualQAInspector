@@ -569,6 +569,53 @@ PackagingOptimization.belongsTo(Product, { foreignKey: 'product_id', as: 'produc
 Product.hasMany(AIReport, { foreignKey: 'product_id', as: 'ai_reports' });
 AIReport.belongsTo(Product, { foreignKey: 'product_id', as: 'product' });
 
+// AIResult model for persisting all AI outputs
+const AIResult = sequelize.define('AIResult', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  user_id: { type: DataTypes.INTEGER, allowNull: true },
+  endpoint: { type: DataTypes.STRING, allowNull: false },
+  input_data: { type: DataTypes.JSONB, allowNull: true },
+  result_text: { type: DataTypes.TEXT, allowNull: true },
+  parsed_result: { type: DataTypes.JSONB, allowNull: true },
+}, { tableName: 'ai_results', timestamps: true, createdAt: 'created_at', updatedAt: false });
+
+// BatchInspection model
+const BatchInspection = sequelize.define('BatchInspection', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  name: { type: DataTypes.STRING, allowNull: false },
+  status: { type: DataTypes.STRING, defaultValue: 'pending' },
+  total_images: { type: DataTypes.INTEGER, defaultValue: 0 },
+  processed_images: { type: DataTypes.INTEGER, defaultValue: 0 },
+  results: { type: DataTypes.JSONB, defaultValue: [] },
+  aggregate_report: { type: DataTypes.JSONB, allowNull: true },
+  product_id: { type: DataTypes.INTEGER, allowNull: true },
+}, { tableName: 'batch_inspections', timestamps: true, createdAt: 'created_at', updatedAt: 'updated_at' });
+
+// ReInspectionSchedule model
+const ReInspectionSchedule = sequelize.define('ReInspectionSchedule', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  inspection_id: { type: DataTypes.INTEGER, allowNull: true },
+  product_id: { type: DataTypes.INTEGER, allowNull: true },
+  reason: { type: DataTypes.STRING },
+  confidence_score: { type: DataTypes.FLOAT },
+  scheduled_at: { type: DataTypes.DATE, allowNull: true },
+  status: { type: DataTypes.STRING, defaultValue: 'pending' },
+  priority: { type: DataTypes.STRING, defaultValue: 'normal' },
+}, { tableName: 'reinspection_schedules', timestamps: true, createdAt: 'created_at', updatedAt: 'updated_at' });
+
+// MESAlert model
+const MESAlert = sequelize.define('MESAlert', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  defect_id: { type: DataTypes.INTEGER, allowNull: true },
+  product_id: { type: DataTypes.INTEGER, allowNull: true },
+  alert_type: { type: DataTypes.STRING },
+  severity: { type: DataTypes.STRING },
+  message: { type: DataTypes.TEXT },
+  line_id: { type: DataTypes.STRING },
+  acknowledged: { type: DataTypes.BOOLEAN, defaultValue: false },
+  acknowledged_at: { type: DataTypes.DATE, allowNull: true },
+}, { tableName: 'mes_alerts', timestamps: true, createdAt: 'created_at', updatedAt: 'updated_at' });
+
 module.exports = {
   sequelize,
   User,
@@ -582,5 +629,9 @@ module.exports = {
   TrendAnalysis,
   QualityInspection,
   PackagingOptimization,
-  AIReport
+  AIReport,
+  AIResult,
+  BatchInspection,
+  ReInspectionSchedule,
+  MESAlert,
 };

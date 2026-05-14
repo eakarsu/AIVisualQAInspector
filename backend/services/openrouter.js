@@ -1,8 +1,17 @@
 class OpenRouterService {
   constructor() {
     this.apiKey = process.env.OPENROUTER_API_KEY;
-    this.model = process.env.OPENROUTER_MODEL || 'anthropic/claude-haiku-4.5';
+    this.model = 'anthropic/claude-3-5-sonnet-20241022';
     this.baseUrl = 'https://openrouter.ai/api/v1';
+  }
+
+  parseAIJson(text) {
+    try { return JSON.parse(text); } catch (e) {}
+    const stripped = text.replace(/```(?:json)?\n?/g, '').replace(/```/g, '').trim();
+    try { return JSON.parse(stripped); } catch (e) {}
+    const start = text.indexOf('{'); const end = text.lastIndexOf('}');
+    if (start !== -1 && end !== -1) { try { return JSON.parse(text.slice(start, end + 1)); } catch (e) {} }
+    return null;
   }
 
   async makeRequest(prompt, systemPrompt = null) {
@@ -53,15 +62,9 @@ class OpenRouterService {
   }
 
   parseJsonResponse(content) {
-    try {
-      return JSON.parse(content);
-    } catch (parseError) {
-      const jsonMatch = content.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        return JSON.parse(jsonMatch[0]);
-      }
-      throw new Error('Failed to parse AI response as JSON');
-    }
+    const result = this.parseAIJson(content);
+    if (result) return result;
+    throw new Error('Failed to parse AI response as JSON');
   }
 
   // Defect Classification

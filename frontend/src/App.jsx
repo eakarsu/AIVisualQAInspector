@@ -29,6 +29,34 @@ import PackagingOptimizerDetail from './components/PackagingOptimizer/PackagingO
 import AIReportGeneratorList from './components/AIReportGenerator/AIReportGeneratorList';
 import AIReportGeneratorDetail from './components/AIReportGenerator/AIReportGeneratorDetail';
 
+// Proposed New Feature Components
+import BatchInspectionList from './components/BatchInspection/BatchInspectionList';
+import BatchInspectionDetail from './components/BatchInspection/BatchInspectionDetail';
+import DefectTrendAnalyticsDashboard from './components/DefectTrendAnalytics/DefectTrendAnalyticsDashboard';
+import ReinspectionSchedulerList from './components/ReinspectionScheduler/ReinspectionSchedulerList';
+import MESAlertsList from './components/MESAlerts/MESAlertsList';
+import PredictiveQualityPage from './components/PredictiveQuality/PredictiveQualityPage';
+import ImprovementRecommendationsPage from './components/ImprovementRecommendations/ImprovementRecommendationsPage';
+import SupplierQualityScorePage from './components/SupplierQualityScore/SupplierQualityScorePage';
+import DefectParameterCorrelationPage from './components/DefectParameterCorrelation/DefectParameterCorrelationPage';
+import SPCControlChartPage from './components/SPCControlChart/SPCControlChartPage';
+// === Batch 08 Gaps & Frontend Mounts ===
+import CfComputerVisionDefectDetectorRunningOnLine from './pages/CfComputerVisionDefectDetectorRunningOnLine'
+import CfPredictiveQualityScoringFlaggingAtRiskProduction from './pages/CfPredictiveQualityScoringFlaggingAtRiskProduction'
+import CfRootCauseCorrelationTyingDefectsToProcess from './pages/CfRootCauseCorrelationTyingDefectsToProcess'
+import CfSupplierQualityTrackingScoringSupplierDefectContributions from './pages/CfSupplierQualityTrackingScoringSupplierDefectContributions'
+import CfProcessChangeRecommendationEngineReducingDefectRates from './pages/CfProcessChangeRecommendationEngineReducingDefectRates'
+import CfDirectMesErpIntegrationForClosedLoop from './pages/CfDirectMesErpIntegrationForClosedLoop'
+import GapNoComputerVisionForDirectDefectDetection from './pages/GapNoComputerVisionForDirectDefectDetection'
+import GapNoPredictiveQualityScoringForUpcomingProduction from './pages/GapNoPredictiveQualityScoringForUpcomingProduction'
+import GapNoAutomatedRootCauseCorrelationMl from './pages/GapNoAutomatedRootCauseCorrelationMl'
+import GapLimitedIntegrationWithProductionLineCamerasOnly from './pages/GapLimitedIntegrationWithProductionLineCamerasOnly'
+import GapNoRealTimeSpcStatisticalProcessControl from './pages/GapNoRealTimeSpcStatisticalProcessControl'
+import GapNoErpIntegrationForReworkScrapTracking from './pages/GapNoErpIntegrationForReworkScrapTracking'
+import GapNoSupplierQualityManagementModule from './pages/GapNoSupplierQualityManagementModule'
+import GapNoWebhooksForMesEventsBeyondThe from './pages/GapNoWebhooksForMesEventsBeyondThe'
+import GapNoNotificationsSubsystem from './pages/GapNoNotificationsSubsystem'
+
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -183,7 +211,81 @@ function App() {
             path="/report-generator/:id"
             element={user ? <AIReportGeneratorDetail /> : <Navigate to="/login" />}
           />
-        </Routes>
+
+          {/* Batch Inspection */}
+          <Route
+            path="/batch-inspection"
+            element={user ? <BatchInspectionList /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/batch-inspection/:id"
+            element={user ? <BatchInspectionDetail /> : <Navigate to="/login" />}
+          />
+
+          {/* Defect Trend Analytics */}
+          <Route
+            path="/defect-trend-analytics"
+            element={user ? <DefectTrendAnalyticsDashboard /> : <Navigate to="/login" />}
+          />
+
+          {/* Reinspection Scheduler */}
+          <Route
+            path="/reinspection-scheduler"
+            element={user ? <ReinspectionSchedulerList /> : <Navigate to="/login" />}
+          />
+
+          {/* MES Alerts */}
+          <Route
+            path="/mes-alerts"
+            element={user ? <MESAlertsList /> : <Navigate to="/login" />}
+          />
+
+          {/* AI Predictive Quality */}
+          <Route
+            path="/predictive-quality"
+            element={user ? <PredictiveQualityPage /> : <Navigate to="/login" />}
+          />
+
+          {/* AI Improvement Recommendations */}
+          <Route
+            path="/improvement-recommendations"
+            element={user ? <ImprovementRecommendationsPage /> : <Navigate to="/login" />}
+          />
+
+          {/* AI Supplier Quality Score */}
+          <Route
+            path="/supplier-quality-score"
+            element={user ? <SupplierQualityScorePage /> : <Navigate to="/login" />}
+          />
+
+          {/* AI Defect-Parameter Correlation */}
+          <Route
+            path="/defect-parameter-correlation"
+            element={user ? <DefectParameterCorrelationPage /> : <Navigate to="/login" />}
+          />
+
+          {/* AI SPC Control Chart */}
+          <Route
+            path="/spc-control-chart"
+            element={user ? <SPCControlChartPage /> : <Navigate to="/login" />}
+          />
+        {/* // === Batch 08 Gaps & Frontend Mounts === */}
+      <Route path="/cf-computer-vision-defect-detector-running-on-line-cameras" element={<ProtectedRoute><CfComputerVisionDefectDetectorRunningOnLine /></ProtectedRoute>} />
+      <Route path="/cf-predictive-quality-scoring-flagging-at-risk-production-runs" element={<ProtectedRoute><CfPredictiveQualityScoringFlaggingAtRiskProduction /></ProtectedRoute>} />
+      <Route path="/cf-root-cause-correlation-tying-defects-to-process-parameters" element={<ProtectedRoute><CfRootCauseCorrelationTyingDefectsToProcess /></ProtectedRoute>} />
+      <Route path="/cf-supplier-quality-tracking-scoring-supplier-defect-contributions" element={<ProtectedRoute><CfSupplierQualityTrackingScoringSupplierDefectContributions /></ProtectedRoute>} />
+      <Route path="/cf-process-change-recommendation-engine-reducing-defect-rates" element={<ProtectedRoute><CfProcessChangeRecommendationEngineReducingDefectRates /></ProtectedRoute>} />
+      <Route path="/cf-direct-mes-erp-integration-for-closed-loop-quality-control" element={<ProtectedRoute><CfDirectMesErpIntegrationForClosedLoop /></ProtectedRoute>} />
+      <Route path="/gap-no-computer-vision-for-direct-defect-detection-from" element={<ProtectedRoute><GapNoComputerVisionForDirectDefectDetection /></ProtectedRoute>} />
+      <Route path="/gap-no-predictive-quality-scoring-for-upcoming-production-runs" element={<ProtectedRoute><GapNoPredictiveQualityScoringForUpcomingProduction /></ProtectedRoute>} />
+      <Route path="/gap-no-automated-root-cause-correlation-ml" element={<ProtectedRoute><GapNoAutomatedRootCauseCorrelationMl /></ProtectedRoute>} />
+      <Route path="/gap-limited-integration-with-production-line-cameras-only-generic-integrations" element={<ProtectedRoute><GapLimitedIntegrationWithProductionLineCamerasOnly /></ProtectedRoute>} />
+      <Route path="/gap-no-real-time-spc-statistical-process-control-visualization" element={<ProtectedRoute><GapNoRealTimeSpcStatisticalProcessControl /></ProtectedRoute>} />
+      <Route path="/gap-no-erp-integration-for-rework-scrap-tracking" element={<ProtectedRoute><GapNoErpIntegrationForReworkScrapTracking /></ProtectedRoute>} />
+      <Route path="/gap-no-supplier-quality-management-module" element={<ProtectedRoute><GapNoSupplierQualityManagementModule /></ProtectedRoute>} />
+      <Route path="/gap-no-webhooks-for-mes-events-beyond-the-alert" element={<ProtectedRoute><GapNoWebhooksForMesEventsBeyondThe /></ProtectedRoute>} />
+      <Route path="/gap-no-notifications-subsystem" element={<ProtectedRoute><GapNoNotificationsSubsystem /></ProtectedRoute>} />
+      </Routes>
       </div>
     </Router>
   );

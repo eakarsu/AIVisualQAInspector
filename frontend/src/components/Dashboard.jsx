@@ -174,6 +174,41 @@ function Dashboard() {
     }
   ];
 
+  const opsFeatures = [
+    {
+      title: 'Batch Inspection',
+      description: 'Upload up to 20 images for parallel async AI analysis',
+      icon: '🗂️',
+      color: '#8b5cf6',
+      path: '/batch-inspection',
+      stat: null
+    },
+    {
+      title: 'Defect Trend Analytics',
+      description: 'Time-series defect tracking + AI predictive analysis',
+      icon: '📊',
+      color: '#0ea5e9',
+      path: '/defect-trend-analytics',
+      stat: null
+    },
+    {
+      title: 'Reinspection Scheduler',
+      description: 'Auto-schedule re-inspections from low-confidence verdicts',
+      icon: '⏱️',
+      color: '#14b8a6',
+      path: '/reinspection-scheduler',
+      stat: null
+    },
+    {
+      title: 'MES Alerts',
+      description: 'Manufacturing Execution System line-stop / quality-hold alerts',
+      icon: '🚨',
+      color: '#ef4444',
+      path: '/mes-alerts',
+      stat: null
+    }
+  ];
+
   return (
     <div className="main-content">
       <div className="page-header">
@@ -233,7 +268,7 @@ function Dashboard() {
       </div>
 
       {/* AI Features */}
-      <div>
+      <div style={{ marginBottom: '2.5rem' }}>
         <div className="section-header">
           <span className="section-title">AI-Powered Features</span>
           <span className="section-badge">Powered by Claude AI</span>
@@ -261,6 +296,33 @@ function Dashboard() {
                   {feature.stat} <span style={{ fontSize: '0.8125rem', fontWeight: 400, color: 'var(--text-secondary)' }}>items</span>
                 </div>
               )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Operations Features */}
+      <div>
+        <div className="section-header">
+          <span className="section-title">Operations & Workflow</span>
+          <div className="section-divider" />
+        </div>
+        <div className="dashboard-grid">
+          {opsFeatures.map((feature, index) => (
+            <div
+              key={index}
+              className="dashboard-card"
+              style={{ '--card-accent': feature.color }}
+              onClick={() => navigate(feature.path)}
+            >
+              <div
+                className="dashboard-card-icon"
+                style={{ backgroundColor: `${feature.color}15` }}
+              >
+                {feature.icon}
+              </div>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
             </div>
           ))}
         </div>

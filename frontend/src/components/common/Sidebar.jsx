@@ -9,6 +9,7 @@ function Sidebar({ user, onLogout }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aiExpanded, setAiExpanded] = useState(true);
   const [coreExpanded, setCoreExpanded] = useState(true);
+  const [opsExpanded, setOpsExpanded] = useState(true);
 
   const handleLogout = async () => {
     try {
@@ -103,6 +104,58 @@ function Sidebar({ user, onLogout }) {
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
         <circle cx="12" cy="13" r="4"/>
+      </svg>
+    )},
+    { path: '/predictive-quality', label: 'Predictive Quality', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-5"/>
+      </svg>
+    )},
+    { path: '/improvement-recommendations', label: 'Improvement Plan', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+      </svg>
+    )},
+    { path: '/supplier-quality-score', label: 'Supplier Quality', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    )},
+    { path: '/defect-parameter-correlation', label: 'Defect Correlation', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 3v18h18"/><polyline points="3 17 9 11 13 15 21 7"/>
+      </svg>
+    )},
+    { path: '/spc-control-chart', label: 'SPC Control Chart', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 12h4l3-9 4 18 3-9h4"/>
+      </svg>
+    )}
+  ];
+
+  const opsLinks = [
+    { path: '/batch-inspection', label: 'Batch Inspection', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+      </svg>
+    )},
+    { path: '/defect-trend-analytics', label: 'Trend Analytics', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
+        <line x1="6" y1="20" x2="6" y2="14"/>
+      </svg>
+    )},
+    { path: '/reinspection-scheduler', label: 'Reinspection Scheduler', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+    )},
+    { path: '/mes-alerts', label: 'MES Alerts', icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
     )}
   ];
@@ -208,6 +261,23 @@ function Sidebar({ user, onLogout }) {
               <div className="sidebar-section-divider" />
             )}
             {(collapsed || aiExpanded) && aiLinks.map((item) => (
+              <NavLink key={item.path} item={item} />
+            ))}
+          </div>
+
+          {/* Operations Section */}
+          <div className="sidebar-section">
+            {!collapsed ? (
+              <button className="sidebar-section-header" onClick={() => setOpsExpanded(!opsExpanded)}>
+                <span className="sidebar-section-title">OPERATIONS</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ transform: opsExpanded ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s' }}>
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+            ) : (
+              <div className="sidebar-section-divider" />
+            )}
+            {(collapsed || opsExpanded) && opsLinks.map((item) => (
               <NavLink key={item.path} item={item} />
             ))}
           </div>
