@@ -40,6 +40,7 @@ import ImprovementRecommendationsPage from './components/ImprovementRecommendati
 import SupplierQualityScorePage from './components/SupplierQualityScore/SupplierQualityScorePage';
 import DefectParameterCorrelationPage from './components/DefectParameterCorrelation/DefectParameterCorrelationPage';
 import SPCControlChartPage from './components/SPCControlChart/SPCControlChartPage';
+import CustomViewsPage from './components/CustomViews/CustomViewsPage';
 // === Batch 08 Gaps & Frontend Mounts ===
 import CfComputerVisionDefectDetectorRunningOnLine from './pages/CfComputerVisionDefectDetectorRunningOnLine'
 import CfPredictiveQualityScoringFlaggingAtRiskProduction from './pages/CfPredictiveQualityScoringFlaggingAtRiskProduction'
@@ -56,6 +57,11 @@ import GapNoErpIntegrationForReworkScrapTracking from './pages/GapNoErpIntegrati
 import GapNoSupplierQualityManagementModule from './pages/GapNoSupplierQualityManagementModule'
 import GapNoWebhooksForMesEventsBeyondThe from './pages/GapNoWebhooksForMesEventsBeyondThe'
 import GapNoNotificationsSubsystem from './pages/GapNoNotificationsSubsystem'
+
+function ProtectedRoute({ children }) {
+  const token = localStorage.getItem('token');
+  return token ? children : <Navigate to="/login" />;
+}
 
 function App() {
   const [user, setUser] = useState(null);
@@ -268,6 +274,12 @@ function App() {
           <Route
             path="/spc-control-chart"
             element={user ? <SPCControlChartPage /> : <Navigate to="/login" />}
+          />
+
+          {/* QA Custom Views */}
+          <Route
+            path="/custom-views"
+            element={user ? <CustomViewsPage /> : <Navigate to="/login" />}
           />
         {/* // === Batch 08 Gaps & Frontend Mounts === */}
       <Route path="/cf-computer-vision-defect-detector-running-on-line-cameras" element={<ProtectedRoute><CfComputerVisionDefectDetectorRunningOnLine /></ProtectedRoute>} />

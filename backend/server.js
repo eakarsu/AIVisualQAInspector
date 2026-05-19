@@ -84,6 +84,9 @@ app.use('/api/defect-trend-analytics', auth, defectTrendAnalyticsRoutes);
 app.use('/api/reinspection-scheduler', auth, reinspectionSchedulerRoutes);
 app.use('/api/mes-alerts', auth, mesAlertsRoutes);
 
+// Custom Views (no auth — read-only chart/report endpoints + rules CRUD) - MUST be before any 404 handler
+app.use('/api/custom-views', require('./routes/customViews'));
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
