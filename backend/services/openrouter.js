@@ -1,7 +1,7 @@
 class OpenRouterService {
   constructor() {
     this.apiKey = process.env.OPENROUTER_API_KEY;
-    this.model = 'anthropic/claude-3-5-sonnet-20241022';
+    this.model = process.env.OPENROUTER_MODEL || 'anthropic/claude-haiku-4.5';
     this.baseUrl = 'https://openrouter.ai/api/v1';
   }
 

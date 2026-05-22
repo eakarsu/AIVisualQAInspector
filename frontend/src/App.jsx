@@ -41,6 +41,9 @@ import SupplierQualityScorePage from './components/SupplierQualityScore/Supplier
 import DefectParameterCorrelationPage from './components/DefectParameterCorrelation/DefectParameterCorrelationPage';
 import SPCControlChartPage from './components/SPCControlChart/SPCControlChartPage';
 import CustomViewsPage from './components/CustomViews/CustomViewsPage';
+import CodexCustomVizFeature from './pages/CodexCustomVizFeature';
+import CodexOperationsFeature from './pages/CodexOperationsFeature';
+
 // === Batch 08 Gaps & Frontend Mounts ===
 import CfComputerVisionDefectDetectorRunningOnLine from './pages/CfComputerVisionDefectDetectorRunningOnLine'
 import CfPredictiveQualityScoringFlaggingAtRiskProduction from './pages/CfPredictiveQualityScoringFlaggingAtRiskProduction'
@@ -101,6 +104,9 @@ function App() {
       <div className="app-container">
         {user && <Sidebar user={user} onLogout={handleLogout} />}
         <Routes>
+        <Route path="/codex/custom-viz" element={<ProtectedRoute><CodexCustomVizFeature /></ProtectedRoute>} />
+        <Route path="/codex/operations" element={<ProtectedRoute><CodexOperationsFeature /></ProtectedRoute>} />
+
           <Route
             path="/login"
             element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />}
