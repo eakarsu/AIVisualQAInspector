@@ -54,7 +54,6 @@ import CfDirectMesErpIntegrationForClosedLoop from './pages/CfDirectMesErpIntegr
 import GapNoComputerVisionForDirectDefectDetection from './pages/GapNoComputerVisionForDirectDefectDetection'
 import GapNoPredictiveQualityScoringForUpcomingProduction from './pages/GapNoPredictiveQualityScoringForUpcomingProduction'
 import GapNoAutomatedRootCauseCorrelationMl from './pages/GapNoAutomatedRootCauseCorrelationMl'
-import GapLimitedIntegrationWithProductionLineCamerasOnly from './pages/GapLimitedIntegrationWithProductionLineCamerasOnly'
 import GapNoRealTimeSpcStatisticalProcessControl from './pages/GapNoRealTimeSpcStatisticalProcessControl'
 import GapNoErpIntegrationForReworkScrapTracking from './pages/GapNoErpIntegrationForReworkScrapTracking'
 import GapNoSupplierQualityManagementModule from './pages/GapNoSupplierQualityManagementModule'
@@ -297,7 +296,6 @@ function App() {
       <Route path="/gap-no-computer-vision-for-direct-defect-detection-from" element={<ProtectedRoute><GapNoComputerVisionForDirectDefectDetection /></ProtectedRoute>} />
       <Route path="/gap-no-predictive-quality-scoring-for-upcoming-production-runs" element={<ProtectedRoute><GapNoPredictiveQualityScoringForUpcomingProduction /></ProtectedRoute>} />
       <Route path="/gap-no-automated-root-cause-correlation-ml" element={<ProtectedRoute><GapNoAutomatedRootCauseCorrelationMl /></ProtectedRoute>} />
-      <Route path="/gap-limited-integration-with-production-line-cameras-only-generic-integrations" element={<ProtectedRoute><GapLimitedIntegrationWithProductionLineCamerasOnly /></ProtectedRoute>} />
       <Route path="/gap-no-real-time-spc-statistical-process-control-visualization" element={<ProtectedRoute><GapNoRealTimeSpcStatisticalProcessControl /></ProtectedRoute>} />
       <Route path="/gap-no-erp-integration-for-rework-scrap-tracking" element={<ProtectedRoute><GapNoErpIntegrationForReworkScrapTracking /></ProtectedRoute>} />
       <Route path="/gap-no-supplier-quality-management-module" element={<ProtectedRoute><GapNoSupplierQualityManagementModule /></ProtectedRoute>} />

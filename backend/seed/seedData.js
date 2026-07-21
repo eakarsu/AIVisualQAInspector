@@ -16,6 +16,11 @@ const {
   AIReport
 } = require('../models');
 
+if (process.env.ALLOW_DESTRUCTIVE_SEED !== 'true') throw new Error('ALLOW_DESTRUCTIVE_SEED=true is required');
+if (!process.env.SEED_ADMIN_PASSWORD || !process.env.SEED_ADMIN_EMAIL) {
+  throw new Error('SEED_ADMIN_EMAIL and SEED_ADMIN_PASSWORD are required');
+}
+
 const seedData = async () => {
   try {
     console.log('Starting database seed...');
@@ -25,9 +30,9 @@ const seedData = async () => {
     console.log('Database synced');
 
     // Create demo user
-    const hashedPassword = await bcrypt.hash('password123', 10);
+    const hashedPassword = await bcrypt.hash(process.env.SEED_ADMIN_PASSWORD, 12);
     await User.create({
-      email: 'demo@example.com',
+      email: process.env.SEED_ADMIN_EMAIL,
       password: hashedPassword,
       name: 'Demo User'
     });
@@ -275,7 +280,7 @@ const seedData = async () => {
     console.log(`  - Packaging Optimizations: ${packagingOptimizations.length}`);
     console.log(`  - AI Reports: ${aiReports.length}`);
     console.log(`  - Reports: ${reports.length}`);
-    console.log('\nDemo credentials: demo@example.com / password123');
+    console.log('\nSeed user created; credentials were supplied through the environment.');
 
     process.exit(0);
   } catch (error) {

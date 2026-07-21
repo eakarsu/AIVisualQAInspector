@@ -27,9 +27,11 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user.id, email: user.email, name: user.name },
-      process.env.JWT_SECRET || 'visual-qa-inspector-secret-key',
-      { expiresIn: '24h' }
+      { id: String(user.id), email: user.email, name: user.name,
+        role: process.env.AUTH_DEFAULT_ROLE || 'qa_operator',
+        tenantId: process.env.GOVERNANCE_TENANT_ID, subjectIds: [`account:${user.id}`] },
+      process.env.JWT_SECRET,
+      { algorithm: 'HS256', expiresIn: '8h' }
     );
 
     req.session.user = {
@@ -81,7 +83,7 @@ router.get('/verify', (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'visual-qa-inspector-secret-key');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET, { algorithms: ['HS256'] });
     res.json({ valid: true, user: decoded });
   } catch (error) {
     res.status(401).json({ error: 'Invalid token' });

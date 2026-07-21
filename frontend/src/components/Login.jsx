@@ -7,12 +7,6 @@ function Login({ onLogin }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleAutoFill = () => {
-    setEmail('demo@example.com');
-    setPassword('password123');
-    setError('');
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -88,10 +82,6 @@ function Login({ onLogin }) {
           <p className="login-subtitle">Sign in to your account to continue</p>
 
           {error && <div className="error-message">{error}</div>}
-
-          <button type="button" className="auto-fill-btn" onClick={handleAutoFill}>
-            Use demo credentials
-          </button>
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
