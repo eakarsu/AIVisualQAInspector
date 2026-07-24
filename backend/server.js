@@ -47,6 +47,7 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api', auth);
 app.use('/api/governance', governanceRouter);
+app.use('/api/runtime-ai', require('./routes/runtimeAi'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/inspections', require('./routes/inspections'));
 app.use('/api/defects', require('./routes/defects'));

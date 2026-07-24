@@ -2,7 +2,7 @@ class OpenRouterService {
   constructor() {
     this.apiKey = process.env.OPENROUTER_API_KEY;
     this.model = process.env.OPENROUTER_MODEL || 'anthropic/claude-haiku-4.5';
-    this.baseUrl = 'https://openrouter.ai/api/v1';
+    this.baseUrl = String(process.env.OPENROUTER_BASE_URL || '').replace(/\/$/, '');
   }
 
   parseAIJson(text) {
@@ -15,8 +15,8 @@ class OpenRouterService {
   }
 
   async makeRequest(prompt, systemPrompt = null) {
-    if (!this.apiKey || this.apiKey === 'your-openrouter-api-key-here') {
-      throw new Error('OpenRouter API key not configured');
+    if (!this.apiKey || !this.model || !this.baseUrl || this.apiKey === 'your-openrouter-api-key-here') {
+      throw new Error('OpenRouter configuration is required');
     }
 
     const messages = [];

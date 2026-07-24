@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
+const auth = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -66,11 +67,13 @@ router.post('/logout', (req, res) => {
 });
 
 // Get current user
-router.get('/me', (req, res) => {
-  if (req.session.user) {
-    res.json({ user: req.session.user });
-  } else {
-    res.status(401).json({ error: 'Not authenticated' });
+router.get('/me', auth, async (req, res) => {
+  try {
+    const user = await User.findByPk(req.user.id, { attributes: ['id', 'email', 'name'] });
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json({ user });
+  } catch (error) {
+    res.status(500).json({ error: 'Identity lookup failed' });
   }
 });
 
