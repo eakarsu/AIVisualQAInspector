@@ -17,6 +17,8 @@ async function main() {
     id SERIAL PRIMARY KEY, email VARCHAR(255) UNIQUE NOT NULL, password VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
   )`);
+  await pool.query('ALTER TABLE users ALTER COLUMN created_at SET DEFAULT NOW()');
+  await pool.query('ALTER TABLE users ALTER COLUMN updated_at SET DEFAULT NOW()');
   const migration = fs.readFileSync(path.resolve(__dirname, '../migrations/001_governed_workflows.sql'), 'utf8');
   await pool.query(migration);
   await pool.query(`CREATE TABLE IF NOT EXISTS visual_ai_results (
