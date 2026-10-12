@@ -1,3 +1,4 @@
+import NativeAIPresets from '../NativeAIPresets';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -86,9 +87,7 @@ function AIReportGeneratorList() {
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)} title="Generate New AI Report">
         {formError && <div className="error-message">{formError}</div>}
-        <button type="button" className="btn btn-outline" onClick={loadSampleData} style={{ marginBottom: '1rem', fontSize: '0.8rem' }}>
-          Load Sample Data
-        </button>
+        <NativeAIPresets kind="generator" value={formData} onChange={setFormData} products={products} disabled={submitting} />
         <form onSubmit={handleSubmit}>
           <div className="form-group"><label>Product</label><select name="product_id" value={formData.product_id} onChange={handleInputChange}><option value="">Select a product (optional)</option>{products.map((p) => <option key={p.id} value={p.id}>{p.name} ({p.sku})</option>)}</select></div>
           <div className="form-group"><label>Report Name *</label><input type="text" name="report_name" value={formData.report_name} onChange={handleInputChange} placeholder="e.g., Q1 Quality Performance Report" required /></div>

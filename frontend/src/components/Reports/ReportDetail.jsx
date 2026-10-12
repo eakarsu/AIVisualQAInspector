@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from '../common/Modal';
+import AIReport from '../AIReport';
 
 function ReportDetail() {
   const { id } = useParams();
@@ -255,20 +256,7 @@ function ReportDetail() {
         {/* AI Analysis */}
         {data.ai_analysis && (
           <div style={{ marginBottom: '2rem' }}>
-            <h3 style={{ marginBottom: '1rem' }}>AI Analysis Results</h3>
-            <div style={{
-              background: '#f8fafc',
-              padding: '1.5rem',
-              borderRadius: '0.75rem',
-              border: '1px solid var(--border)'
-            }}>
-              {data.ai_analysis.summary && (
-                <p style={{ marginBottom: '1rem' }}><strong>Summary:</strong> {data.ai_analysis.summary}</p>
-              )}
-              {data.ai_analysis.confidence && (
-                <p><strong>Confidence:</strong> {data.ai_analysis.confidence}%</p>
-              )}
-            </div>
+            <AIReport response={data.ai_analysis} title="AI Analysis Results" />
           </div>
         )}
 

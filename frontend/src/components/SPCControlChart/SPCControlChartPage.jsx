@@ -1,3 +1,5 @@
+import NativeAIPresets from '../NativeAIPresets';
+import FormattedAIReport from "../FormattedAIReport";
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -77,7 +79,7 @@ function SPCControlChartPage() {
             Compute Shewhart X-bar / R limits for n=2..10 and have AI flag out-of-control signals and trends.
           </p>
         </div>
-        <button type="button" className="btn btn-secondary" onClick={loadSample}>Load Sample</button>
+        <NativeAIPresets kind="spc" value={form} onChange={setForm} disabled={loading} />
       </div>
 
       <form onSubmit={handleSubmit} className="card" style={{ padding: '1rem', display: 'grid', gap: '0.75rem' }}>
@@ -104,7 +106,7 @@ function SPCControlChartPage() {
                 <strong>Limits:</strong> UCL={result.limits.UCL_x?.toFixed(4)} CL={result.limits.CL_x?.toFixed(4)} LCL={result.limits.LCL_x?.toFixed(4)} | R: UCL={result.limits.UCL_r?.toFixed(4)} CL={result.limits.CL_r?.toFixed(4)} LCL={result.limits.LCL_r?.toFixed(4)}
               </div>
             )}
-            <pre style={{ background: '#f5f5f5', padding: '0.75rem', borderRadius: 6, overflow: 'auto', fontSize: 13 }}>{JSON.stringify(result, null, 2)}</pre>
+            <FormattedAIReport response={result} />
           </div>
         )}
       </form>

@@ -1,3 +1,5 @@
+import NativeAIPresets from '../NativeAIPresets';
+import FormattedAIReport from "../FormattedAIReport";
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -78,7 +80,7 @@ function SupplierQualityScorePage() {
             Score a supplier's quality from historical defect, rework, delivery, audit, and incident data.
           </p>
         </div>
-        <button type="button" className="btn btn-outline" onClick={loadSample}>Load Sample</button>
+        <NativeAIPresets kind="supplier" value={form} onChange={setForm} disabled={loading} />
       </div>
 
       {error && <div className="error-message">{error}</div>}
@@ -101,9 +103,7 @@ function SupplierQualityScorePage() {
       {result && (
         <div style={{ background: 'var(--card-bg, #fff)', padding: '1.5rem', borderRadius: '0.5rem' }}>
           <h3>AI Supplier Score</h3>
-          <pre style={{ whiteSpace: 'pre-wrap', fontSize: '0.875rem', background: 'var(--bg-subtle, #f8fafc)', padding: '1rem', borderRadius: '0.5rem' }}>
-            {JSON.stringify(result, null, 2)}
-          </pre>
+          <FormattedAIReport response={result} />
         </div>
       )}
     </div>

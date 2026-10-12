@@ -161,6 +161,9 @@ function BatchInspectionList() {
         title="New Batch Inspection"
       >
         {formError && <div className="error-message">{formError}</div>}
+        <div className="ai-preset-bar"><div><strong>Fill example fields</strong><p>Select real image files to complete this inspection. Existing selections are kept.</p></div><div className="ai-actions">{['Assembly visual check', 'Incoming component check', 'Final packaging check'].map((label, index) => <button key={label} type="button" className="btn btn-secondary" disabled={submitting} onClick={() => { setName(label); setProductId((current) => current || products[0]?.id || ''); }}>{label}</button>)}</div></div>
+        {!files.length && <p role="status">Select image files to complete this example.</p>}
+        {!productId && !products.length && <p role="status">No product record is available; product remains unselected.</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Batch Name *</label>

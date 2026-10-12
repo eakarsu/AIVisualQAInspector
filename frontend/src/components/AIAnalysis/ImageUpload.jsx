@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import AIResultDisplay from './AIResultDisplay';
+import AIReport from '../AIReport';
 
 function ImageUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -194,7 +194,7 @@ function ImageUpload() {
               </div>
             )}
 
-            <AIResultDisplay result={result} />
+            <AIReport response={result} />
           </>
         )}
       </div>

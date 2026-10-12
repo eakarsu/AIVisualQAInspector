@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AIResultDisplay from '../common/AIResultDisplay';
+import AIReport from '../AIReport';
 
 function DefectTrendAnalyticsDashboard() {
   const [products, setProducts] = useState([]);
@@ -82,6 +82,7 @@ function DefectTrendAnalyticsDashboard() {
           <label>Time Range (days)</label>
           <input type="number" min="1" max="365" value={days} onChange={(e) => setDays(parseInt(e.target.value) || 30)} />
         </div>
+        <div className="ai-actions">{[14, 30, 90].map((sampleDays) => <button key={sampleDays} type="button" className="btn btn-secondary" disabled={analyzing} onClick={() => { setDays(sampleDays); setProductId((current) => current || products[0]?.id || ''); }}>Review {sampleDays} days</button>)}</div>
         <button className="btn btn-outline" onClick={fetchTimeSeries} disabled={loading}>
           {loading ? 'Loading...' : 'Refresh'}
         </button>
@@ -180,7 +181,7 @@ function DefectTrendAnalyticsDashboard() {
           </div>
 
           {analysis && (
-            <AIResultDisplay result={analysis} title="AI Trend Analysis" />
+            <AIReport response={analysis} title="AI Trend Analysis" />
           )}
         </>
       )}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from '../common/Modal';
-import AIResultDisplay from '../common/AIResultDisplay';
+import AIReport from '../AIReport';
 
 function DefectClassifierDetail() {
   const { id } = useParams();
@@ -164,8 +164,8 @@ function DefectClassifierDetail() {
 
         {/* AI Analysis Results */}
         {item.ai_analysis && (
-          <AIResultDisplay
-            result={item.ai_analysis}
+          <AIReport
+            response={item.ai_analysis}
             title="AI Classification Results"
           />
         )}

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from '../common/Modal';
-import AIResultDisplay from '../AIAnalysis/AIResultDisplay';
+import AIReport from '../AIReport';
 
 function InspectionDetail() {
   const { id } = useParams();
@@ -308,7 +308,7 @@ function InspectionDetail() {
                   Run New Analysis
                 </button>
               </div>
-              <AIResultDisplay result={aiResult} />
+              <AIReport response={aiResult} />
             </div>
           )}
         </div>

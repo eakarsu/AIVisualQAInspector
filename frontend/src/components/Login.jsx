@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+export function demoCredentialsAvailable() {
+  return Boolean(import.meta.env.VITE_DEMO_EMAIL && import.meta.env.VITE_DEMO_PASSWORD);
+}
+
+export function fillDemoCredentials(setEmail, setPassword, setError) {
+  if (!demoCredentialsAvailable()) {
+    setError('Demo credentials are unavailable in this local app session.');
+    return false;
+  }
+  setEmail(import.meta.env.VITE_DEMO_EMAIL);
+  setPassword(import.meta.env.VITE_DEMO_PASSWORD);
+  setError('');
+  return true;
+}
+
 function Login({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -110,13 +125,14 @@ function Login({ onLogin }) {
 
             <button
               type="button"
-              onClick={() => { setEmail(import.meta.env.VITE_DEMO_EMAIL || ''); setPassword(import.meta.env.VITE_DEMO_PASSWORD || ''); }}
-              disabled={!import.meta.env.VITE_DEMO_EMAIL || !import.meta.env.VITE_DEMO_PASSWORD}
-              aria-label="Auto Fill Demo Credentials"
+              onClick={() => fillDemoCredentials(setEmail, setPassword, setError)}
+              disabled={!demoCredentialsAvailable()}
+              aria-label="Fill demo credentials"
               style={{ width: '100%', marginBottom: '12px', padding: '10px 14px', borderRadius: '8px', border: '1px solid currentColor', background: 'transparent', cursor: 'pointer' }}
             >
-              Auto Fill Demo Credentials
+              Fill Demo Credentials
             </button>
+            {!demoCredentialsAvailable() && <p role="status">Demo credentials are unavailable in this local app session.</p>}
             <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
               {loading ? 'Signing in...' : 'Sign In'}
             </button>

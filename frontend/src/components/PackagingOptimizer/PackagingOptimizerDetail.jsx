@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from '../common/Modal';
-import AIResultDisplay from '../common/AIResultDisplay';
+import AIReport from '../AIReport';
 
 function PackagingOptimizerDetail() {
   const { id } = useParams();
@@ -120,7 +120,7 @@ function PackagingOptimizerDetail() {
           </div>
         )}
 
-        {item.ai_analysis && <AIResultDisplay result={item.ai_analysis} title="AI Packaging Optimization Results" />}
+        {item.ai_analysis && <AIReport response={item.ai_analysis} title="AI Packaging Optimization Results" />}
 
         {!item.ai_analysis && (
           <div style={{ marginTop: '2rem', padding: '2rem', textAlign: 'center', background: '#f8fafc', borderRadius: '0.75rem', border: '2px dashed #e2e8f0' }}>

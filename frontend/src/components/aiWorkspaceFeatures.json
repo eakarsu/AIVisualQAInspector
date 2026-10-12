@@ -1,0 +1,107 @@
+[
+  {
+    "name": "CfComputerVisionDefectDetectorRunningOnLine",
+    "id": "cf-computer-vision-defect-detector-running-on-line-cameras/history",
+    "title": "Computer vision defect detector running on line cameras",
+    "description": "Prepare a professional advisory report for computer vision defect detector running on line cameras using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "CfDirectMesErpIntegrationForClosedLoop",
+    "id": "cf-direct-mes-erp-integration-for-closed-loop-quality-control/history",
+    "title": "Direct MES/ERP integration for closed-loop quality control",
+    "description": "Prepare a professional advisory report for direct mes/erp integration for closed-loop quality control using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "CfPredictiveQualityScoringFlaggingAtRiskProduction",
+    "id": "cf-predictive-quality-scoring-flagging-at-risk-production-runs/history",
+    "title": "Predictive quality scoring flagging at-risk production runs",
+    "description": "Prepare a professional advisory report for predictive quality scoring flagging at-risk production runs using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "CfProcessChangeRecommendationEngineReducingDefectRates",
+    "id": "cf-process-change-recommendation-engine-reducing-defect-rates/history",
+    "title": "Process-change recommendation engine reducing defect rates",
+    "description": "Prepare a professional advisory report for process-change recommendation engine reducing defect rates using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "CfRootCauseCorrelationTyingDefectsToProcess",
+    "id": "cf-root-cause-correlation-tying-defects-to-process-parameters/history",
+    "title": "Root cause correlation tying defects to process parameters (temperature, speed, materials)",
+    "description": "Prepare a professional advisory report for root cause correlation tying defects to process parameters (temperature, speed, materials) using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "CfSupplierQualityTrackingScoringSupplierDefectContributions",
+    "id": "cf-supplier-quality-tracking-scoring-supplier-defect-contributions/history",
+    "title": "Supplier quality tracking scoring supplier defect contributions",
+    "description": "Prepare a professional advisory report for supplier quality tracking scoring supplier defect contributions using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapLimitedIntegrationWithProductionLineCamerasOnly",
+    "id": "gap-limited-integration-with-production-line-cameras-only-generic-integrations/history",
+    "title": "Limited integration with production-line cameras (only generic integrations module)",
+    "description": "Prepare a professional advisory report for limited integration with production-line cameras (only generic integrations module) using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapNoAutomatedRootCauseCorrelationMl",
+    "id": "gap-no-automated-root-cause-correlation-ml/history",
+    "title": "No automated root-cause correlation ML",
+    "description": "Prepare a professional advisory report for no automated root-cause correlation ml using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapNoComputerVisionForDirectDefectDetection",
+    "id": "gap-no-computer-vision-for-direct-defect-detection-from/history",
+    "title": "No computer vision for direct defect detection from images",
+    "description": "Prepare a professional advisory report for no computer vision for direct defect detection from images using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapNoErpIntegrationForReworkScrapTracking",
+    "id": "gap-no-erp-integration-for-rework-scrap-tracking/history",
+    "title": "No ERP integration for rework/scrap tracking",
+    "description": "Prepare a professional advisory report for no erp integration for rework/scrap tracking using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapNoNotificationsSubsystem",
+    "id": "gap-no-notifications-subsystem/history",
+    "title": "No notifications subsystem",
+    "description": "Prepare a professional advisory report for no notifications subsystem using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapNoPredictiveQualityScoringForUpcomingProduction",
+    "id": "gap-no-predictive-quality-scoring-for-upcoming-production-runs/history",
+    "title": "No predictive quality scoring for upcoming production runs",
+    "description": "Prepare a professional advisory report for no predictive quality scoring for upcoming production runs using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapNoRealTimeSpcStatisticalProcessControl",
+    "id": "gap-no-real-time-spc-statistical-process-control-visualization/history",
+    "title": "No real-time SPC (Statistical Process Control) visualization",
+    "description": "Prepare a professional advisory report for no real-time spc (statistical process control) visualization using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapNoSupplierQualityManagementModule",
+    "id": "gap-no-supplier-quality-management-module/history",
+    "title": "No supplier quality management module",
+    "description": "Prepare a professional advisory report for no supplier quality management module using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  },
+  {
+    "name": "GapNoWebhooksForMesEventsBeyondThe",
+    "id": "gap-no-webhooks-for-mes-events-beyond-the-alert/history",
+    "title": "No webhooks for MES events beyond the alert pipeline",
+    "description": "Prepare a professional advisory report for no webhooks for mes events beyond the alert pipeline using the brief and evidence you provide. Review the findings, assumptions, and action plan before applying changes.",
+    "samples": []
+  }
+]

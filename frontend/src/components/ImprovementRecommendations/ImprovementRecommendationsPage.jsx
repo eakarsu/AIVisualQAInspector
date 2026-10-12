@@ -1,3 +1,5 @@
+import AIReport from '../AIReport';
+import NativeAIPresets from '../NativeAIPresets';
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -54,7 +56,7 @@ function ImprovementRecommendationsPage() {
             Six-Sigma-style improvement plan with quick wins and longer-term initiatives.
           </p>
         </div>
-        <button type="button" className="btn btn-outline" onClick={loadSample}>Load Sample</button>
+        <NativeAIPresets kind="improvement" value={form} onChange={setForm} disabled={loading} />
       </div>
 
       {error && <div className="error-message">{error}</div>}
@@ -72,11 +74,7 @@ function ImprovementRecommendationsPage() {
       {result && (
         <div style={{ background: 'var(--card-bg, #fff)', padding: '1.5rem', borderRadius: '0.5rem' }}>
           <h3>AI Improvement Plan</h3>
-          <pre style={{ whiteSpace: 'pre-wrap', fontSize: '0.875rem', background: 'var(--bg-subtle, #f8fafc)', padding: '1rem', borderRadius: '0.5rem' }}>
-            {typeof (result.result || result.plan || result.recommendations) === 'string'
-              ? (result.result || result.plan || result.recommendations)
-              : JSON.stringify(result, null, 2)}
-          </pre>
+          <AIReport response={result} title="AI analysis" />
         </div>
       )}
     </div>

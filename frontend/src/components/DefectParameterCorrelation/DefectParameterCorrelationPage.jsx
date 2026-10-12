@@ -1,3 +1,5 @@
+import NativeAIPresets from '../NativeAIPresets';
+import FormattedAIReport from "../FormattedAIReport";
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -63,7 +65,7 @@ function DefectParameterCorrelationPage() {
             Correlate defect rates with process parameter shifts to surface root-cause candidates.
           </p>
         </div>
-        <button type="button" className="btn btn-secondary" onClick={loadSample}>Load Sample</button>
+        <NativeAIPresets kind="correlation" value={form} onChange={setForm} disabled={loading} />
       </div>
 
       <form onSubmit={handleSubmit} className="card" style={{ padding: '1rem', display: 'grid', gap: '0.75rem' }}>
@@ -88,7 +90,7 @@ function DefectParameterCorrelationPage() {
         </div>
         {error && <div style={{ color: '#b00020' }}>{error}</div>}
         {result && (
-          <pre style={{ background: '#f5f5f5', padding: '0.75rem', borderRadius: 6, overflow: 'auto', fontSize: 13 }}>{JSON.stringify(result, null, 2)}</pre>
+          <FormattedAIReport response={result} />
         )}
       </form>
     </div>

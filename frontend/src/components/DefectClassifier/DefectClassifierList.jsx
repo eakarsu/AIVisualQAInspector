@@ -1,3 +1,4 @@
+import NativeAIPresets from '../NativeAIPresets';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -148,9 +149,7 @@ function DefectClassifierList() {
         title="New Defect Classification"
       >
         {formError && <div className="error-message">{formError}</div>}
-        <button type="button" className="btn btn-outline" onClick={loadSampleData} style={{ marginBottom: '1rem', fontSize: '0.8rem' }}>
-          Load Sample Data
-        </button>
+        <NativeAIPresets kind="classifier" value={formData} onChange={setFormData} products={products} disabled={submitting} />
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Product (Optional)</label>

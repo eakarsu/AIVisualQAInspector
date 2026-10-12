@@ -1,3 +1,4 @@
+import AIReportLibrary from "../AIReportLibrary";
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -309,7 +310,7 @@ function Sidebar({ user, onLogout }) {
             </button>
           </div>
         </div>
-      </aside>
+      <AIReportLibrary /></aside>
     </>
   );
 }

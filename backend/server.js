@@ -91,6 +91,14 @@ if (generatedRoutesEnabled) {
   mounts.forEach(([mount, modulePath]) => app.use(mount, aiRateLimiter, require(modulePath)));
 }
 
+
+// Advisory AI reports only; native execution and approval routes stay unchanged.
+const aiWorkspaceSupport = require("./aiWorkspaceAdapters.cjs");
+const aiWorkspaceDatabase = aiWorkspaceSupport.sequelizeQueryClient(require("./config/database.js"));
+app.use('/api/report-workspace', require("./aiWorkspace.cjs").createAIWorkspaceRouter({
+  pool: aiWorkspaceDatabase, authenticateToken: require("./middleware/auth.js"),
+  aiRateLimiter: aiWorkspaceSupport.createWorkspaceLimiter(), features: require("./aiWorkspaceFeatures.json"),
+}));
 app.use((req, res) => res.status(404).json({ error: 'not found' }));
 app.use((err, req, res, next) => {
   console.error('Unhandled request error:', err.message);

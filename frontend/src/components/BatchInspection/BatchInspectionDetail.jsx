@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import AIResultDisplay from '../common/AIResultDisplay';
+import AIReport from '../AIReport';
 
 function BatchInspectionDetail() {
   const { id } = useParams();
@@ -110,7 +110,7 @@ function BatchInspectionDetail() {
       )}
 
       {batch.aggregate_report && (
-        <AIResultDisplay result={batch.aggregate_report} title="Aggregate Quality Report" />
+        <AIReport response={batch.aggregate_report} title="Aggregate Quality Report" />
       )}
 
       <div style={{ marginTop: '2rem' }}>
